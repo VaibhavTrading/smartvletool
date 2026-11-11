@@ -1,0 +1,8 @@
+{
+  "name": "All in One Tools for SMARTVLETOOL.COM",
+  "description": "Professional Document Scanning \u0026 ID Print Studio Workflow with OpenCV.js perspective transformation, shadow removal, and A4 batch printing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

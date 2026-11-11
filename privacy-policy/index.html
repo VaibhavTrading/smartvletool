@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy & Data Transparency | SMART VLE TOOL</title>
+    <meta name="description" content="Detailed disclosure of SMART VLE TOOL' client-side processing architecture, local IndexedDB persistence, data deletion controls, and Google AdSense disclosures." />
+    <link rel="canonical" href="https://smartvletool.com/privacy-policy" />
+    
+    <!-- OpenGraph Metadata -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SMART VLE TOOL" />
+    <meta property="og:title" content="Privacy Policy & Data Transparency | SMART VLE TOOL" />
+    <meta property="og:description" content="Detailed disclosure of SMART VLE TOOL' client-side processing architecture, local IndexedDB persistence, data deletion controls, and Google AdSense disclosures." />
+    <meta property="og:url" content="https://smartvletool.com/privacy-policy" />
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Privacy Policy & Data Transparency | SMART VLE TOOL" />
+    <meta name="twitter:description" content="Detailed disclosure of SMART VLE TOOL' client-side processing architecture, local IndexedDB persistence, data deletion controls, and Google AdSense disclosures." />
+
+    <!-- Schema.org Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://smartvletool.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Privacy Policy",
+              "item": "https://smartvletool.com/privacy-policy"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <!-- PWA & Offline Support -->
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#4338ca">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="smartvletool">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/icon.svg">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/site-config.js"></script>
+</head>
+<body>
+<div class="dashboard">
+
+    <!-- UNIVERSAL WEBSITE NAVIGATION HEADER -->
+    <header class="site-header">
+        <div class="site-nav-container">
+            <a href="/" class="site-brand" data-link title="SMART VLE TOOL Home">
+                <div class="site-logo-icon">💻</div>
+                <div class="site-brand-text">
+                    <h1>SMART VLE TOOL</h1>
+                    <span>Free Online Image Editing & Document Tools</span>
+                </div>
+            </a>
+            
+            <nav aria-label="Main Navigation">
+                <ul class="site-nav-links">
+                    <li><a href="/" class="site-nav-link" data-link>Home</a></li>
+                    <li><a href="/document-studio" class="site-nav-link" data-link>Document Studio</a></li>
+                    <li><a href="/id-card-studio" class="site-nav-link" data-link>ID Card Studio</a></li>
+                    <li><a href="/image-pdf-editor" class="site-nav-link" data-link>Image & PDF Editor</a></li>
+                    <li><a href="/about-us" class="site-nav-link" data-link>About Us</a></li>
+                    <li><a href="/contact-us" class="site-nav-link" data-link>Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <div class="site-nav-actions">
+                <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+                    ☰
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-nav-drawer" id="mobileNavDrawer">
+            <a href="/" class="site-nav-link" data-link>🏠 Home</a>
+            <a href="/document-studio" class="site-nav-link" data-link>📄 Document Studio</a>
+            <a href="/id-card-studio" class="site-nav-link" data-link>🪪 ID Card Studio</a>
+            <a href="/image-pdf-editor" class="site-nav-link" data-link>🖼️ Image & PDF Editor</a>
+            <a href="/about-us" class="site-nav-link" data-link>ℹ️ About Us</a>
+            <a href="/contact-us" class="site-nav-link" data-link>✉️ Contact Us</a>
+        </div>
+    </header>
+
+    <!-- PRIVACY POLICY & LOCAL DATA CONTROL -->
+    <main class="page-view" id="page-privacy">
+        <div class="tool-page-layout-wrapper">
+            <aside class="side-ad-space left-ad" aria-label="Advertisement">
+                <div class="adsense-card skyscraper"></div>
+            </aside>
+            <div class="central-tool-content">
+        <div class="legal-page-header">
+            <div class="container-narrow">
+                <div class="breadcrumb-nav" style="justify-content: center;">
+                    <a href="/" class="breadcrumb-link" data-link>Home</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-current">Privacy Policy</span>
+                </div>
+                <h1>Privacy Policy & Data Transparency</h1>
+                <p>Last Audited & Updated: November 2026</p>
+            </div>
+        </div>
+
+        <div class="legal-document-body">
+            <section class="legal-section">
+                <h2>1. Introduction</h2>
+                <p>
+                    SMART VLE TOOL ("We", "Us", "Our", or "Platform") is committed to protecting your privacy, data security, and transparency. This Privacy Policy details how SMART VLE TOOL handles technical data, local browser storage, and third-party advertising services when you visit or use our online document, image, and PDF editing utilities.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>2. Scope of This Privacy Policy</h2>
+                <p>
+                    This Privacy Policy applies to all pages, features, and studio tools hosted under SMART VLE TOOL, including Document Studio, ID Card Studio, and Image & PDF Editor.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>3. Information We Collect</h2>
+                <p>
+                    SMART VLE TOOL operates without mandatory user registration or account sign-in. Depending on how you interact with the Platform:
+                </p>
+                <ul>
+                    <li><strong>Technical Log Data:</strong> Standard HTTP request data logged by web hosting infrastructure, including IP address, browser type, operating system, referring URL, date/time stamps, and request paths.</li>
+                    <li><strong>Support Inquiries:</strong> Name, email address, subject, and message content voluntarily provided when contacting us via email or contact form.</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>4. Information We Do Not Collect</h2>
+                <p>
+                    Factually and strictly:
+                </p>
+                <ul>
+                    <li>We do <strong>NOT</strong> require user registration, passwords, or personal profiles.</li>
+                    <li>We do <strong>NOT</strong> extract, store, or sell personal identity information contained within documents you edit.</li>
+                    <li>We do <strong>NOT</strong> upload user original images, documents, or ID card files to a remote server for processing.</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>5. How We Use Information</h2>
+                <p>
+                    Collected technical information is used strictly to:
+                </p>
+                <ul>
+                    <li>Deliver website resources, scripts, and stylesheets efficiently.</li>
+                    <li>Maintain platform operational stability, diagnostic logging, abuse protection, and security.</li>
+                    <li>Deliver non-disruptive third-party advertisements via Google AdSense to keep our services free for all users.</li>
+                    <li>Respond to user feedback, technical bug reports, and support inquiries.</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>6. Browser-Based Image & Document Processing</h2>
+                <p>
+                    Image and document processing operations on SMART VLE TOOL take place directly inside your device's web browser using HTML5 Canvas, WebGL, OpenCV.js WebAssembly, and jsPDF:
+                </p>
+                <ul>
+                    <li>Uploaded files remain entirely within your device memory.</li>
+                    <li>Original files and processed outputs are not transmitted to our server during standard browser-based operations.</li>
+                    <li>To prevent loss of ongoing work when switching tabs or refreshing, local canvas state and recent project thumbnails may be saved in your browser's local <strong>IndexedDB</strong> storage (<code>Monu_DocIDStudio_DB</code> and <code>Monu_ImagePDFEditor_DB</code>).</li>
+                </ul>
+            </section>
+
+            <!-- Interactive Privacy & Local Data Management Panel -->
+            <section class="data-control-panel">
+                <h3><span>🛡️</span> Privacy & Local Data Control</h3>
+                <p class="data-control-desc">
+                    You have complete control over your local browser data. Below is a live summary of data currently stored in your browser's IndexedDB by SMART VLE TOOL. You can permanently erase all stored projects, cached documents, and ID sets at any time.
+                </p>
+
+                <div class="data-stats-grid">
+                    <div class="data-stat-card">
+                        <div class="data-stat-number" id="privacy-doc-count">0</div>
+                        <div class="data-stat-label">Scanned Documents</div>
+                    </div>
+                    <div class="data-stat-card">
+                        <div class="data-stat-number" id="privacy-id-count">0</div>
+                        <div class="data-stat-label">Saved ID Card Sets</div>
+                    </div>
+                    <div class="data-stat-card">
+                        <div class="data-stat-number" id="privacy-editor-count">0</div>
+                        <div class="data-stat-label">Editor Projects</div>
+                    </div>
+                </div>
+
+                <div class="data-action-row">
+                    <button type="button" class="btn-secondary-outline" onclick="MonuRouter.refreshPrivacyStorageStats()">
+                        Refresh Storage Stats
+                    </button>
+                    <button type="button" class="btn-danger-outline" onclick="MonuRouter.promptClearAllData()">
+                        Clear All Saved Data & Reset Studio
+                    </button>
+                </div>
+                <div id="privacy-clear-status" style="margin-top: 12px; font-size: 13px;"></div>
+            </section>
+
+            <section class="legal-section">
+                <h2>7. Local Browser Storage & Shared Device Notice</h2>
+                <p>
+                    Projects and working data saved in your browser remain under your device control. If you use a shared or public device (such as a cyber café or school computer) to edit sensitive identity documents, please use the <strong>"Clear All Saved Data & Reset Studio"</strong> button above or clear your browser history/cache before closing your session.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>8. Google AdSense & Advertising Cookies</h2>
+                <p>
+                    SMART VLE TOOL is monetized through advertisements served by Google AdSense and its advertising partners:
+                </p>
+                <ul>
+                    <li>Google uses cookies (such as the DoubleClick cookie) to serve ads based on your visit to this site and other websites on the Internet.</li>
+                    <li>Google's advertising cookies allow Google and its partners to serve advertisements based on user browsing history.</li>
+                    <li>You may opt out of personalized advertising at any time by visiting <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer">Google Ads Settings</a> or <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">www.aboutads.info</a>.</li>
+                    <li>Advertising networks do <strong>NOT</strong> receive access to your uploaded images, scanned documents, or processed files.</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>9. Data Retention Summary</h2>
+                <table style="width:100%; border-collapse:collapse; margin-top:12px; font-size:13.5px; color:#334155;">
+                    <thead>
+                        <tr style="background:#f1f5f9; text-align:left;">
+                            <th style="padding:10px; border:1px solid #cbd5e1;">Data Category</th>
+                            <th style="padding:10px; border:1px solid #cbd5e1;">Storage Location</th>
+                            <th style="padding:10px; border:1px solid #cbd5e1;">Retention Period</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding:10px; border:1px solid #cbd5e1;">Browser Studio Projects</td>
+                            <td style="padding:10px; border:1px solid #cbd5e1;">Device IndexedDB & LocalStorage</td>
+                            <td style="padding:10px; border:1px solid #cbd5e1;">Until cleared by user in-app or browser settings</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px; border:1px solid #cbd5e1;">Technical Server Logs</td>
+                            <td style="padding:10px; border:1px solid #cbd5e1;">Hosting Provider Ephemeral Logs</td>
+                            <td style="padding:10px; border:1px solid #cbd5e1;">Standard short-term hosting retention schedule</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px; border:1px solid #cbd5e1;">Support Emails</td>
+                            <td style="padding:10px; border:1px solid #cbd5e1;">Support Mailbox</td>
+                            <td style="padding:10px; border:1px solid #cbd5e1;">Retained as necessary to resolve user inquiry</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="legal-section">
+                <h2>10. Contact & Privacy Inquiries</h2>
+                <p>
+                    For questions regarding this Privacy Policy or data control options, please reach out to us at:
+                </p>
+                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:16px; margin-top:10px;">
+                    <strong>Support Email:</strong> <a href="mailto:vaibhav.dewangan499@gmail.com" style="color:#4f46e5; font-weight:700;">vaibhav.dewangan499@gmail.com</a><br>
+                    <strong>Response Time:</strong> Typically within 24 to 48 business hours.
+                </div>
+            </section>
+        </div>
+    </div>
+            <aside class="side-ad-space right-ad" aria-label="Advertisement">
+                <div class="adsense-card skyscraper"></div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- UNIVERSAL WEBSITE FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>SMART VLE TOOL</h2>
+                    <p>Free, private, browser-based online tools for scanned document enhancement, dual-slot ID card print framing, image compression, resizing, format conversion, and PDF management.</p>
+                    <div class="footer-badge">
+                        <span>🛡️ In-Browser Processing & Selected Offline Support</span>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Our Tools</h3>
+                    <ul class="footer-nav-list">
+                        <li><a href="/document-studio" class="footer-link" data-link>Document Studio</a></li>
+                        <li><a href="/id-card-studio" class="footer-link" data-link>ID Card Studio</a></li>
+                        <li><a href="/image-pdf-editor" class="footer-link" data-link>Image & PDF Editor</a></li>
+                        <li><a href="/document-studio#doc-tutorial" class="footer-link" data-link>Scanner Tutorial</a></li>
+                        <li><a href="/id-card-studio#id-tutorial" class="footer-link" data-link>ID Print Guide</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Legal & Privacy</h3>
+                    <ul class="footer-nav-list">
+                        <li><a href="/privacy-policy" class="footer-link" data-link>Privacy Policy</a></li>
+                        <li><a href="/terms-and-conditions" class="footer-link" data-link>Terms and Conditions</a></li>
+                        <li><a href="/copyright-policy" class="footer-link" data-link>Copyright Policy</a></li>
+                        <li><a href="/disclaimer" class="footer-link" data-link>Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Support & Help</h3>
+                    <ul class="footer-nav-list">
+                        <li><a href="/about-us" class="footer-link" data-link>About Us</a></li>
+                        <li><a href="/contact-us" class="footer-link" data-link>Contact Us</a></li>
+                        <li><a href="/#explore-tools" class="footer-link" data-link>Explore Tools</a></li>
+                        <li><a href="mailto:vaibhav.dewangan499@gmail.com">vaibhav.dewangan499@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>
+                    © <span id="current-year">2026</span> <strong>SMART VLE TOOL</strong>. All Rights Reserved.
+                </div>
+                <div style="display: flex; gap: 16px;">
+                    <a href="/privacy-policy" class="footer-link" data-link>Privacy</a>
+                    <a href="/terms-and-conditions" class="footer-link" data-link>Terms</a>
+                    <a href="/disclaimer" class="footer-link" data-link>Disclaimer</a>
+                    <a href="/contact-us" class="footer-link" data-link>Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<!-- Core Engine Scripts -->
+<script src="/browser-image-compression.js"></script>
+<script src="/smart-optimizer.js"></script>
+<script src="/script.js"></script>
+<script src="/editor.js"></script>
+<script src="/site-router.js"></script>
+<script src="/pwa-controller.js"></script>
+</body>
+</html>
