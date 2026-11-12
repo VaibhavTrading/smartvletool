@@ -65,6 +65,28 @@ async function startServer() {
     res.status(404).send('Workbox script not found');
   });
 
+  // Explicit route for social preview banner assets (WhatsApp, Facebook, Twitter)
+  app.get(['/assets/aistudio/:filename', '/public/assets/aistudio/:filename'], (req, res) => {
+    const filename = req.params.filename;
+    const publicAssetPath = path.resolve(__dirname, 'public/assets/aistudio', filename);
+    const rootAssetPath = path.resolve(__dirname, 'assets/aistudio', filename);
+    const distAssetPath = path.resolve(__dirname, 'dist/assets/aistudio', filename);
+
+    const targetPath = fs.existsSync(publicAssetPath) ? publicAssetPath :
+                       fs.existsSync(rootAssetPath) ? rootAssetPath :
+                       fs.existsSync(distAssetPath) ? distAssetPath : null;
+
+    if (targetPath) {
+      const ext = path.extname(targetPath).toLowerCase();
+      const mimeType = ext === '.png' ? 'image/png' : (ext === '.jpg' || ext === '.jpeg') ? 'image/jpeg' : 'application/octet-stream';
+      res.setHeader('Content-Type', mimeType);
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      return res.sendFile(targetPath);
+    }
+    res.status(404).send('Asset image not found');
+  });
+
   // Serve static assets from built dist if present
   const distPath = path.resolve(__dirname, 'dist');
   if (fs.existsSync(distPath)) {
