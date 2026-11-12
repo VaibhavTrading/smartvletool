@@ -11,7 +11,7 @@
         SITE_NAME: 'SMART VLE TOOL',
         WEBSITE_NAME: 'smartvletool',
         SITE_TAGLINE: 'Free Online Image Editing & Document Tools for VLEs & Students',
-        SUPPORT_EMAIL: 'vaibhav.dewangan499@gmail.com',
+        SUPPORT_EMAIL: 'customer@smartvletool.in',
 
         /**
          * Resolves the active base URL dynamically.

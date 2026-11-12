@@ -1,7 +1,7 @@
 /**
  * SMART VLE TOOL - Client Router, Hash Navigation, SEO & Privacy Controller
  * Uses window.MONU_SITE_CONFIG for dynamic base URL resolution
- * Support Email: vaibhav.dewangan499@gmail.com
+ * Support Email: customer@smartvletool.in
  * Production Domain: https://smartvletool.com
  */
 
@@ -9,7 +9,7 @@
     const config = window.MONU_SITE_CONFIG || {
         PRODUCTION_DOMAIN: 'https://smartvletool.com',
         SITE_NAME: 'SMART VLE TOOL',
-        SUPPORT_EMAIL: 'vaibhav.dewangan499@gmail.com',
+        SUPPORT_EMAIL: 'customer@smartvletool.in',
         getBaseUrl: function () {
             if (this.PRODUCTION_DOMAIN && 
                 this.PRODUCTION_DOMAIN !== 'YOUR_DOMAIN_HERE' && 
@@ -30,7 +30,7 @@
 
     window.MONU_CONFIG = config;
 
-    const SUPPORT_EMAIL = config.SUPPORT_EMAIL || 'vaibhav.dewangan499@gmail.com';
+    const SUPPORT_EMAIL = config.SUPPORT_EMAIL || 'customer@smartvletool.in';
 
     const ROUTES = {
         '/': {
