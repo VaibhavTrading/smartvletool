@@ -41,20 +41,23 @@
         },
         '/document-studio': {
             pageId: 'page-doc-studio',
-            title: 'Document Studio – Scanned Document Enhancement & Perspective Correction | SMART VLE TOOL',
-            description: 'Enhance scanned documents, fix perspective distortion with OpenCV.js quad warping, remove shadows, adjust contrast, and export clean A4 prints directly in your browser.',
+            title: 'Document Studio – Remove Shadow & Clean Scanned Docs Online',
+            description: 'Clean mobile-captured documents online. Remove dark shadows, fix background brightness, straighten tilted scans, and get crystal clear printouts for VLE work.',
+            keywords: 'document studio, remove shadow from document online, clean scanned document for print, whiten document background, mobile photo to scan print, vle document cleaner',
             path: '/document-studio'
         },
         '/id-card-studio': {
             pageId: 'page-id-studio',
-            title: 'ID Card Studio – Dual-Slot ID Card Framing & A4 Print Layout | SMART VLE TOOL',
-            description: 'Frame front and back ID cards into standard 85.6x53.98mm dimensions with cutting trim marks directly in your browser for single or dual A4 printing.',
+            title: 'ID Card Studio – Print Front & Back ID Card on One A4 Page',
+            description: 'Straighten, clean, and align front and back sides of Aadhaar, PAN, or Voter ID cards in exact card size on a single A4 page for instant printing. Best for VLE.',
+            keywords: 'id card studio, front and back id card print on one page, aadhaar card print layout a4, straighten tilted id card, pvc card size print on a4, csc id card print tool',
             path: '/id-card-studio'
         },
         '/image-pdf-editor': {
             pageId: 'page-editor-studio',
-            title: 'Image & PDF Editor – Compress, Resize, Crop, Convert & PDF Tools | SMART VLE TOOL',
-            description: 'Complete online image & PDF studio. Compress to target KB, resize in pixels/inches/cm/mm, precision crop with angle presets, convert formats, and optimize multi-page PDFs directly in your browser.',
+            title: 'Online Image Resizer in KB, Crop, Convert & PDF Organizer',
+            description: 'Resize & compress images in exact KB with 300 DPI for government forms. Crop, adjust color, watermark, convert formats, and organize or optimize PDFs online.',
+            keywords: 'resize photo in kb, compress image 300 dpi, increase image size in kb, crop image online, pdf organizer, pdf optimizer, images to pdf, adjust image brightness contrast',
             path: '/image-pdf-editor'
         },
         '/about': {
@@ -136,6 +139,16 @@
             document.head.appendChild(metaDesc);
         }
         metaDesc.content = routeInfo.description;
+
+        if (routeInfo.keywords) {
+            let metaKw = document.querySelector('meta[name="keywords"]');
+            if (!metaKw) {
+                metaKw = document.createElement('meta');
+                metaKw.name = 'keywords';
+                document.head.appendChild(metaKw);
+            }
+            metaKw.content = routeInfo.keywords;
+        }
 
         const canonicalUrl = config.getCanonicalUrl(routeInfo.path || routeInfo.canonical || '/');
 
