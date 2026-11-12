@@ -1,11 +1,11 @@
 /**
  * SMART VLE TOOL - Centralized Site & Production Domain Configuration
- * Production Domain: https://smartvletool.com
+ * Production Domain: https://smartvletool.in
  */
 
 (function () {
     const SITE_CONFIG = {
-        PRODUCTION_DOMAIN: 'https://smartvletool.com',
+        PRODUCTION_DOMAIN: 'https://smartvletool.in',
         
         // Brand & Application Info:
         SITE_NAME: 'SMART VLE TOOL',
@@ -25,7 +25,7 @@
             if (typeof window !== 'undefined' && window.location && window.location.origin) {
                 return window.location.origin;
             }
-            return 'https://smartvletool.com';
+            return 'https://smartvletool.in';
         },
 
         /**

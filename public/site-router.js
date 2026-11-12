@@ -2,12 +2,12 @@
  * SMART VLE TOOL - Client Router, Hash Navigation, SEO & Privacy Controller
  * Uses window.MONU_SITE_CONFIG for dynamic base URL resolution
  * Support Email: customer@smartvletool.in
- * Production Domain: https://smartvletool.com
+ * Production Domain: https://smartvletool.in
  */
 
 (function () {
     const config = window.MONU_SITE_CONFIG || {
-        PRODUCTION_DOMAIN: 'https://smartvletool.com',
+        PRODUCTION_DOMAIN: 'https://smartvletool.in',
         SITE_NAME: 'SMART VLE TOOL',
         SUPPORT_EMAIL: 'customer@smartvletool.in',
         getBaseUrl: function () {
@@ -19,7 +19,7 @@
             if (typeof window !== 'undefined' && window.location && window.location.origin) {
                 return window.location.origin;
             }
-            return 'https://smartvletool.com';
+            return 'https://smartvletool.in';
         },
         getCanonicalUrl: function (path) {
             const base = this.getBaseUrl();
@@ -328,7 +328,7 @@
                 return;
             }
 
-            const basePlatformUrl = config.getBaseUrl() || 'https://smartvletool.com';
+            const basePlatformUrl = config.getBaseUrl() || 'https://smartvletool.in';
             const emailSubject = subject ? `[SMART VLE TOOL Inquiry] ${subject}` : `[SMART VLE TOOL Inquiry] from ${name}`;
             const emailBody = `Hello SMART VLE TOOL Support Team,\n\nFrom: ${name} (${email})\nSubject: ${subject || 'General Assistance'}\n\nMessage:\n${message}\n\n---\nSent via SMART VLE TOOL Web Platform (${basePlatformUrl})`;
 
