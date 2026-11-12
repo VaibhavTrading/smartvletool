@@ -3161,16 +3161,16 @@ select:focus, input[type="text"]:focus { border-color: #b621fe; box-shadow: 0 0 
 }
 
 .tool-embed-wrapper .app-grid {
-    height: min(650px, 80vh);
-    max-height: 680px;
+    height: min(750px, 200vh);
+    max-height: 750px;
     min-height: 460px;
 }
 
 .tool-embed-wrapper .app-grid.id-mode,
 .app-grid.id-mode {
-    height: min(580px, 72vh) !important;
-    max-height: 600px !important;
-    min-height: 420px !important;
+    height: min(750px, 200vh) !important;
+    max-height: 750px !important;
+    min-height: 460px !important;
 }
 
 .tool-embed-wrapper .editor-workspace {
