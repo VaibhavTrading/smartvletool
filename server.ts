@@ -37,6 +37,24 @@ async function startServer() {
     }
   }
 
+  // Explicit route for favicons & touch icons
+  app.get(['/favicon.ico', '/favicon.png', '/apple-touch-icon.png'], (req, res) => {
+    const filename = path.basename(req.path);
+    const distFavicon = path.resolve(__dirname, 'dist', filename);
+    const publicFavicon = path.resolve(__dirname, 'public', filename);
+    const rootFavicon = path.resolve(__dirname, filename);
+    const targetPath = fs.existsSync(distFavicon) ? distFavicon :
+                       fs.existsSync(publicFavicon) ? publicFavicon :
+                       fs.existsSync(rootFavicon) ? rootFavicon : null;
+    if (targetPath) {
+      const mimeType = filename.endsWith('.ico') ? 'image/x-icon' : 'image/png';
+      res.setHeader('Content-Type', mimeType);
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      return res.sendFile(targetPath);
+    }
+    res.status(404).send('Favicon not found');
+  });
+
   // Explicit route for sw.js to prevent redirect issues
   app.get('/sw.js', (req, res) => {
     const swPath = path.resolve(__dirname, 'dist/sw.js');
