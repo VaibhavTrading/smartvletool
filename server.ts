@@ -20,7 +20,7 @@ async function startServer() {
     res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
     res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
     res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
-    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://docs.opencv.org https://cdnjs.cloudflare.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https:;");
+    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://docs.opencv.org https://cdnjs.cloudflare.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https:;");
     next();
   });
 
@@ -37,8 +37,16 @@ async function startServer() {
     }
   }
 
-  // Explicit route for favicons & touch icons
-  app.get(['/favicon.ico', '/favicon.png', '/apple-touch-icon.png'], (req, res) => {
+  // Explicit route for favicons, touch icons & WhatsApp OG preview image (no redirects, direct 200 response)
+  app.get([
+    '/favicon.ico',
+    '/favicon.png',
+    '/favicon-48x48.png',
+    '/favicon-96x96.png',
+    '/favicon-144x144.png',
+    '/apple-touch-icon.png',
+    '/og-preview.jpg'
+  ], (req, res) => {
     const filename = path.basename(req.path);
     const distFavicon = path.resolve(__dirname, 'dist', filename);
     const publicFavicon = path.resolve(__dirname, 'public', filename);
@@ -47,12 +55,13 @@ async function startServer() {
                        fs.existsSync(publicFavicon) ? publicFavicon :
                        fs.existsSync(rootFavicon) ? rootFavicon : null;
     if (targetPath) {
-      const mimeType = filename.endsWith('.ico') ? 'image/x-icon' : 'image/png';
+      const mimeType = filename.endsWith('.ico') ? 'image/x-icon' : filename.endsWith('.jpg') ? 'image/jpeg' : 'image/png';
       res.setHeader('Content-Type', mimeType);
+      res.setHeader('Access-Control-Allow-Origin', '*');
       res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
       return res.sendFile(targetPath);
     }
-    res.status(404).send('Favicon not found');
+    res.status(404).send('Asset not found');
   });
 
   // Explicit route for sw.js to prevent redirect issues
@@ -103,6 +112,20 @@ async function startServer() {
       return res.sendFile(targetPath);
     }
     res.status(404).send('Asset image not found');
+  });
+
+  // Explicit route for tutorial videos & posters (supports HTTP Range 206 streaming & proper 404)
+  app.get('/videos/:filename', (req, res) => {
+    const filename = path.basename(req.params.filename);
+    const distVideoPath = path.resolve(__dirname, 'dist/videos', filename);
+    const publicVideoPath = path.resolve(__dirname, 'public/videos', filename);
+    const targetPath = fs.existsSync(distVideoPath) ? distVideoPath :
+                       fs.existsSync(publicVideoPath) ? publicVideoPath : null;
+
+    if (targetPath) {
+      return res.sendFile(targetPath);
+    }
+    res.status(404).send('Tutorial video not found');
   });
 
   // Serve static assets from built dist if present

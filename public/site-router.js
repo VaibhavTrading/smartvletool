@@ -261,9 +261,12 @@
 
         // Update URL & Meta
         currentRoutePath = pathname;
-        const fullTargetUrl = pathname + (hash || '');
+        const cleanTargetHash = (hash === '#explore-tools') ? '' : (hash || '');
+        const fullTargetUrl = pathname + cleanTargetHash;
         if (push && (window.location.pathname + window.location.hash) !== fullTargetUrl) {
-            window.history.pushState({ path: pathname, hash: hash }, route.title, fullTargetUrl);
+            window.history.pushState({ path: pathname, hash: cleanTargetHash }, route.title, fullTargetUrl);
+        } else if (!push && hash === '#explore-tools' && pathname === '/') {
+            window.history.replaceState({ path: '/', hash: '' }, route.title, '/');
         }
 
         updateMetaTags(route);
@@ -273,11 +276,11 @@
         const mobileDrawer = document.getElementById('mobileNavDrawer');
         if (mobileDrawer) mobileDrawer.classList.remove('open');
 
-        // Scroll to hash target if provided, otherwise scroll to top
-        if (hash) {
+        // Scroll to hash target on explicit navigation, otherwise scroll to top on load/reload
+        if (hash && (push || hash !== '#explore-tools')) {
             scrollToHash(hash);
         } else {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: push ? 'smooth' : 'auto' });
         }
 
         // If navigating to privacy policy, refresh storage statistics
@@ -434,9 +437,13 @@
 
     // ═══ INITIALIZE ROUTER & LISTENERS ═══
     function initRouter() {
+        if ('scrollRestoration' in window.history) {
+            window.history.scrollRestoration = 'manual';
+        }
+
         // Intercept internal link clicks with hash support
         document.addEventListener('click', function (e) {
-            const link = e.target.closest('a[data-link], a.site-nav-link, a.btn-tool-guide, a.footer-link, a.breadcrumb-link, a.hero-anchor');
+            const link = e.target.closest('a[data-link], a.site-nav-link, a.btn-tool-guide, a.footer-link, a.breadcrumb-link, a.hero-anchor, a.btn-secondary-hero, a[href^="#"]');
             if (link) {
                 const href = link.getAttribute('href');
                 if (href && (href.startsWith('/') || href.startsWith('#')) && !href.startsWith('//')) {
@@ -446,7 +453,9 @@
                     if (pathname === currentRoutePath && hash) {
                         e.preventDefault();
                         scrollToHash(hash);
-                        window.history.pushState({ path: pathname, hash: hash }, document.title, pathname + hash);
+                        if (hash !== '#explore-tools') {
+                            window.history.pushState({ path: pathname, hash: hash }, document.title, pathname + hash);
+                        }
                         return;
                     }
 

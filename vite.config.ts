@@ -13,6 +13,12 @@ export default defineConfig(() => {
         registerType: 'prompt',
         injectRegister: false,
         includeAssets: [
+          'favicon.ico',
+          'favicon.png',
+          'favicon-48x48.png',
+          'favicon-96x96.png',
+          'favicon-144x144.png',
+          'og-preview.jpg',
           'icon.svg',
           'apple-touch-icon.png',
           'pwa-192x192.png',
@@ -26,6 +32,8 @@ export default defineConfig(() => {
           'editor.js',
           'site-router.js',
           'pwa-controller.js',
+          'videos-config.js',
+          'tutorial-videos.js',
           'style.css'
         ],
         manifest: {

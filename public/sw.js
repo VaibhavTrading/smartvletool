@@ -99,8 +99,10 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const request = event.request;
   if (request.method !== 'GET') return;
+  if (request.headers.has('range')) return;
 
   const url = new URL(request.url);
+  if (url.pathname.startsWith('/videos/')) return;
 
   // Strategy 1: External CDNs (OpenCV, jsPDF, PDF.js, Google Fonts) -> Cache First
   const isCdn = url.hostname.includes('opencv.org') ||
