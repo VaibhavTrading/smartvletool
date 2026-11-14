@@ -2337,8 +2337,31 @@ select:focus, input[type="text"]:focus { border-color: #b621fe; box-shadow: 0 0 
 }
 
 .adsense-card.leaderboard {
+    display: block;
+    width: 100%;
     max-width: 728px;
     min-height: 90px;
+    padding: 4px 0;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.adsense-card.leaderboard:hover {
+    background: transparent;
+    border-color: transparent;
+}
+
+.adsense-card.leaderboard::before {
+    display: block;
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.adsense-card.leaderboard ins.adsbygoogle {
+    width: 100%;
 }
 
 .adsense-card.rectangle {
@@ -2362,25 +2385,41 @@ select:focus, input[type="text"]:focus { border-color: #b621fe; box-shadow: 0 0 
 }
 
 .adsense-card.skyscraper {
+    display: block;
     width: 160px;
     min-height: 600px;
-    padding: 14px 8px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
     text-align: center;
     box-sizing: border-box;
 }
 
+.adsense-card.skyscraper:hover {
+    background: transparent;
+    border-color: transparent;
+}
+
+.adsense-card.skyscraper::before {
+    display: block;
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.adsense-card.skyscraper ins.adsbygoogle {
+    width: 160px;
+}
+
 .adsense-card.skyscraper::after {
-    content: "Ad Space (160x600)";
-    font-size: 11px;
-    font-weight: 600;
-    color: #a855f7;
+    content: none;
+    display: none;
 }
 
 .adsense-card.leaderboard::after {
-    content: "Ad Space (728x90)";
-    font-size: 11px;
-    font-weight: 600;
-    color: #a855f7;
+    content: none;
+    display: none;
 }
 
 .tool-page-layout-wrapper {
@@ -3328,14 +3367,10 @@ select:focus, input[type="text"]:focus { border-color: #b621fe; box-shadow: 0 0 
 /* Smart AdSense Placement Spacing */
 .adsense-card.tool-top-ad {
     margin: 18px auto 22px;
-    border-color: #cbd5e1;
-    background: #fafafc;
 }
 
 .adsense-card.tool-bottom-ad {
     margin: 32px auto 40px;
-    border-color: #cbd5e1;
-    background: #fafafc;
 }
 
 /* ===================================================================

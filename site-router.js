@@ -236,6 +236,21 @@
         }
     }
 
+    function initVisibleAds(rootEl) {
+        const scope = rootEl || document;
+        try {
+            const pendingAds = scope.querySelectorAll('ins.adsbygoogle:not([data-adsbygoogle-status]):not([data-monu-ad-pushed])');
+            pendingAds.forEach(ins => {
+                if (ins.offsetParent !== null) {
+                    ins.setAttribute('data-monu-ad-pushed', '1');
+                    (window.adsbygoogle = window.adsbygoogle || []).push({});
+                }
+            });
+        } catch (adErr) {
+            console.warn('AdSense init skipped:', adErr);
+        }
+    }
+
     function navigateTo(url, push = true) {
         const { pathname, hash } = parseUrl(url);
         const route = ROUTES[pathname] || ROUTES['/'];
@@ -248,6 +263,7 @@
         const targetPage = document.getElementById(route.pageId);
         if (targetPage) {
             targetPage.classList.remove('hidden');
+            initVisibleAds(targetPage);
         } else {
             // Target page view not found in current DOM (e.g. multi-page static navigation)
             window.location.href = url;
@@ -513,6 +529,16 @@
         } else {
             navigateTo('/' + (parsed.hash || ''), false);
         }
+
+        // Re-check visible sidebar ads if viewport expands >= 1200px
+        let _adResizeTimer = null;
+        window.addEventListener('resize', function () {
+            clearTimeout(_adResizeTimer);
+            _adResizeTimer = setTimeout(function () {
+                const activePage = document.querySelector('.page-view:not(.hidden)') || document;
+                initVisibleAds(activePage);
+            }, 250);
+        });
     }
 
     function initFaqAccordions() {
