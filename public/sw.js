@@ -3,7 +3,7 @@
  * Complete offline caching for Document Studio, ID Card Studio, Image & PDF Editor
  */
 
-const CACHE_NAME = 'monu-offline-v1.4';
+const CACHE_NAME = 'monu-offline-v1.5';
 
 const PRECACHE_URLS = [
   '/',
@@ -32,6 +32,8 @@ const PRECACHE_URLS = [
   '/smart-optimizer.js',
   '/browser-image-compression.js',
   '/site-router.js',
+  '/videos-config.js',
+  '/tutorial-videos.js',
   '/pwa-controller.js',
   '/manifest.webmanifest',
   '/icon.svg',
@@ -158,11 +160,33 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Strategy 3: Static Assets (JS, CSS, Images) -> Cache First with Network Fallback
+  // Strategy 3: Local CSS & JS -> Network First with Cache Fallback (always pick up latest UI fixes)
+  const isCodeAsset = url.origin === self.location.origin &&
+    (url.pathname.endsWith('.css') || url.pathname.endsWith('.js'));
+
+  if (isCodeAsset) {
+    event.respondWith(
+      fetch(request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const clone = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+          }
+          return networkResponse;
+        })
+        .catch(async () => {
+          const cached = await caches.match(request);
+          if (cached) return cached;
+          return caches.match(url.pathname);
+        })
+    );
+    return;
+  }
+
+  // Strategy 4: Other Static Assets (Images, Manifest, Icons) -> Cache First with Background Update
   event.respondWith(
     caches.match(request).then((cachedResponse) => {
       if (cachedResponse) {
-        // Fetch in background to update cache (stale-while-revalidate for local files)
         fetch(request).then((networkResponse) => {
           if (networkResponse && networkResponse.status === 200) {
             caches.open(CACHE_NAME).then((cache) => cache.put(request, networkResponse));
